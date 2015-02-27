@@ -101,7 +101,7 @@ function gameLoop() {
     stage.update();
 }
 
-
+//resets the FruitTally making it so the player doesn't contniously win because of previous fruits still counting.
 function resetFruitTally() {
     grapes = 0;
     bananas = 0;
@@ -141,17 +141,14 @@ function Reels() {
                 if (watermelon == 3) {
                         playerMoney = playerMoney += betAmount * 5;
                         playerMoneyText.text = "Money " + playerMoney.toString();
-                        console.log("There should be 3 Watermelons");
                     }
                 if (watermelon == 2) {
                         playerMoney = playerMoney += betAmount * 1;
                         playerMoneyText.text = "Money " + playerMoney.toString();
-                        console.log("There should be 2 Watermelons");
                     }
                 if (watermelon == 1) {
                         playerMoney = playerMoney += betAmount * 0;
                         playerMoneyText.text = "Money " + playerMoney.toString();
-                        console.log("There should be 1 Watermelons");
                     }
                 break;
             case checkRange(outCome[spin], 28, 37): // 15.4% probability
@@ -160,17 +157,14 @@ function Reels() {
                 if (grapes == 3){
                 playerMoney = playerMoney += betAmount * 10;
                 playerMoneyText.text = "Money " + playerMoney.toString();
-                console.log("There should be 3 Grapes");
                 }
                 if (grapes == 2) {
                     playerMoney = playerMoney += betAmount * 2;
                     playerMoneyText.text = "Money " + playerMoney.toString();
-                    console.log("There should be 2 grapes");
                 }
                 if (grapes == 1) {
                     playerMoney = playerMoney += betAmount * 0;
                     playerMoneyText.text = "Money " + playerMoney.toString();
-                    console.log("There should be 1 grape");
                 }
                 break;
             case checkRange(outCome[spin], 38, 46): // 13.8% probability
@@ -179,18 +173,15 @@ function Reels() {
                 if (bananas == 3) {
                     playerMoney = playerMoney += betAmount * 20;
                     playerMoneyText.text = "Money " + playerMoney.toString();
-                    console.log("There should be 3 Bananas");
                 }
                 
                 else if (bananas == 2) {
                     playerMoney = playerMoney += betAmount * 2;
                     playerMoneyText.text = "Money " + playerMoney.toString();
-                    console.log("There should be 2 bananas");
                 }
                 else if (bananas == 1) {
                     playerMoney = playerMoney += betAmount * 0;
                     playerMoneyText.text = "Money " + playerMoney.toString();
-                    console.log("There should be 1 banana");
                 }
                 break;
             case checkRange(outCome[spin], 47, 54): // 12.3% probability
@@ -199,18 +190,15 @@ function Reels() {
                 if (oranges == 3) {
                     playerMoney = playerMoney += betAmount * 30;
                     playerMoneyText.text = "Money " + playerMoney.toString();
-                    console.log("There should be 3 oranges");
                 }
 
                 else if (oranges == 2) {
                     playerMoney = playerMoney += betAmount * 3;
                     playerMoneyText.text = "Money " + playerMoney.toString();
-                    console.log("There should be 2 oranges");
                 }
                 else if (oranges == 1) {
                     playerMoney = playerMoney += betAmount * 0;
                     playerMoneyText.text = "Money " + playerMoney.toString();
-                    console.log("There should be 1 oranges");
                 }
                 break;
             case checkRange(outCome[spin], 55, 59): //  7.7% probability
@@ -219,18 +207,15 @@ function Reels() {
                 if (cherries == 3) {
                     playerMoney = playerMoney += betAmount * 40;
                     playerMoneyText.text = "Money " + playerMoney.toString();
-                    console.log("There should be 3 cherries");
                 }
 
                 else if (cherries == 2) {
                     playerMoney = playerMoney += betAmount * 4;
                     playerMoneyText.text = "Money " + playerMoney.toString();
-                    console.log("There should be 2 cherries");
                 }
                 else if (cherries == 1) {
                     playerMoney = playerMoney += betAmount * 0;
                     playerMoneyText.text = "Money " + playerMoney.toString();
-                    console.log("There should be 1 cherry");
                 }
                 break;
             case checkRange(outCome[spin], 60, 62): //  4.6% probability
@@ -251,18 +236,15 @@ function Reels() {
                 if (bells == 3) {
                     playerMoney = playerMoney += betAmount * 75;
                     playerMoneyText.text = "Money " + playerMoney.toString();
-                    console.log("There should be 3 bells");
                 }
 
                 else if (bells == 2) {
                     playerMoney = playerMoney += betAmount * 10;
                     playerMoneyText.text = "Money " + playerMoney.toString();
-                    console.log("There should be 2 bells");
                 }
                 else if (bells == 1) {
                     playerMoney = playerMoney += betAmount * 1;
                     playerMoneyText.text = "Money " + playerMoney.toString();
-                    console.log("There should be 1 bell");
                 }
                 break;
             case checkRange(outCome[spin], 65, 65): //  1.5% probability
@@ -271,18 +253,15 @@ function Reels() {
                 if (sevens == 3) {
                     playerMoney = playerMoney += betAmount * 100;
                     playerMoneyText.text = "Money " + playerMoney.toString();
-                    console.log("There should be 3 Sevens");
                 }
 
                 else if (sevens == 2) {
                     playerMoney = playerMoney += betAmount * 20;
                     playerMoneyText.text = "Money " + playerMoney.toString();
-                    console.log("There should be 2 sevens");
                 }
                 else if (sevens == 1) {
                     playerMoney = playerMoney += betAmount * 5;
                     playerMoneyText.text = "Money " + playerMoney.toString();
-                    console.log(" There should be 1 seven");
                 }
                 break;
         }
@@ -309,7 +288,8 @@ function spinButtonClicked(event) {
         }
     }
     // Informs player they have not bet money.
-    else if (betAmount == 0) {
+    else if (betAmount == 0)
+    {    
         alert("You didn't bet anything ");
     }
     betAmount -= betAmount;
