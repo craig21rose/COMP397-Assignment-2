@@ -1,4 +1,12 @@
-﻿var Button = (function () {
+﻿/**************************************************************************
+ * Source File Name: slotmachine
+ * Original Template Author: Tom Tsiliopoulos
+ * Last Modified By: October 1st, 2014
+ * Date Last Modified: October 1st, 2014
+ * Program Description: Browser Based Slot Machine Template.
+ **************************************************************************/
+
+var Button = (function () {
     function Button(path, x, y) {
         this._x = x;
         this._y = y;
@@ -9,7 +17,7 @@
         this._image.addEventListener("mouseover", this._buttonOver);
         this._image.addEventListener("mouseout", this._buttonOut);
     }
-    // PUBLIC PROPERTIES
+    // Public Properties
     Button.prototype.setX = function (x) {
         this._x = x;
     };
@@ -30,7 +38,7 @@
         return this._image;
     };
 
-    // PRIVATE EVENT HANDLERS
+   //Private Event Handlers
     Button.prototype._buttonOut = function (event) {
         event.currentTarget.alpha = 1; // 100% Alpha
     };
@@ -41,24 +49,20 @@
     return Button;
 })();
 
-// VARIABLES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Variables
 var canvas;
 var stage;
 var tiles = [];
 var reelContainers = [];
 
-// GAME CONSTANTS
+// Game Constants
 var NUM_REELS = 3;
 
 var playerMoney = 1000;
 var jackpot = 5000;
-var turn = 0;
 var betAmount = 0;
-var winNumber = 0;
-var lossNumber = 0;
 var spinResult;
 var fruits = "";
-var winRatio = 0;
 var grapes = 0;
 var bananas = 0;
 var oranges = 0;
@@ -71,7 +75,7 @@ var playerMoneyText;
 var betAmountText;
 var jackpotAmountText;
 
-// GAME OBJECTS
+//Game Objects
 var game;
 var background;
 var spinButton;
@@ -80,8 +84,7 @@ var betOneButton;
 var resetButton;
 var quitButton;
 
-
-// FUNCTIONS ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//Functions
 function init() {
     canvas = document.getElementById("canvas");
     stage = new createjs.Stage(canvas); // Parent Object
@@ -93,7 +96,7 @@ function init() {
     main();
 }
 
-// GAMELOOP
+// Game Loop
 function gameLoop() {
     stage.update();
 }
@@ -110,7 +113,7 @@ function resetFruitTally() {
     watermelon = 0;
 }
 
-/* Utility function to check if a value falls within a range of bounds */
+//Utility function to check if a value falls within a range of bounds 
 function checkRange(value, lowerBounds, upperBounds) {
     if (value >= lowerBounds && value <= upperBounds)
     {
@@ -121,8 +124,10 @@ function checkRange(value, lowerBounds, upperBounds) {
     }
 }
 
-/* When this function is called it determines the betLine results.
-e.g. Bar - Orange - Banana */
+// When this function is called it determines the betLine results.
+// Determines if the player has won.
+// Determines how much money the player has won.
+// Allows for Jackpot win, if combination is correct.
 function Reels() {
     var betLine = [" ", " ", " "];
     var outCome = [0, 0, 0];
@@ -134,14 +139,20 @@ function Reels() {
                 betLine[spin] = "Watermelon";
                 watermelon++;
                 if (watermelon == 3) {
-
-                    alert("You Won the $" + jackpot + " Jackpot!!");
-                    playerMoney = playerMoney += jackpot;
-                    jackpot = 1000;
-                    playerMoneyText.text = "Money: " + playerMoney.toString();
-                   
-                    jackpotAmountText.text = "Current Jackpot: " +  jackpot.toString();
-                }
+                        playerMoney = playerMoney += betAmount * 5;
+                        playerMoneyText.text = "Money " + playerMoney.toString();
+                        console.log("There should be 3 Watermelons");
+                    }
+                if (watermelon == 2) {
+                        playerMoney = playerMoney += betAmount * 1;
+                        playerMoneyText.text = "Money " + playerMoney.toString();
+                        console.log("There should be 2 Watermelons");
+                    }
+                if (watermelon == 1) {
+                        playerMoney = playerMoney += betAmount * 0;
+                        playerMoneyText.text = "Money " + playerMoney.toString();
+                        console.log("There should be 1 Watermelons");
+                    }
                 break;
             case checkRange(outCome[spin], 28, 37): // 15.4% probability
                 betLine[spin] = "Grapes";
@@ -157,7 +168,7 @@ function Reels() {
                     console.log("There should be 2 grapes");
                 }
                 if (grapes == 1) {
-                    playerMoney = playerMoney += betAmount * 1;
+                    playerMoney = playerMoney += betAmount * 0;
                     playerMoneyText.text = "Money " + playerMoney.toString();
                     console.log("There should be 1 grape");
                 }
@@ -177,7 +188,7 @@ function Reels() {
                     console.log("There should be 2 bananas");
                 }
                 else if (bananas == 1) {
-                    playerMoney = playerMoney += betAmount * 1;
+                    playerMoney = playerMoney += betAmount * 0;
                     playerMoneyText.text = "Money " + playerMoney.toString();
                     console.log("There should be 1 banana");
                 }
@@ -197,7 +208,7 @@ function Reels() {
                     console.log("There should be 2 oranges");
                 }
                 else if (oranges == 1) {
-                    playerMoney = playerMoney += betAmount * 1;
+                    playerMoney = playerMoney += betAmount * 0;
                     playerMoneyText.text = "Money " + playerMoney.toString();
                     console.log("There should be 1 oranges");
                 }
@@ -217,7 +228,7 @@ function Reels() {
                     console.log("There should be 2 cherries");
                 }
                 else if (cherries == 1) {
-                    playerMoney = playerMoney += betAmount * 1;
+                    playerMoney = playerMoney += betAmount * 0;
                     playerMoneyText.text = "Money " + playerMoney.toString();
                     console.log("There should be 1 cherry");
                 }
@@ -226,20 +237,12 @@ function Reels() {
                 betLine[spin] = "Bar";
                 bars++;
                 if (bars == 3) {
-                    playerMoney = playerMoney += betAmount * 50;
-                    playerMoneyText.text = "Money " + playerMoney.toString();
-                    console.log("There should be 3 bars");
-                }
+                    alert("You Won the $" + jackpot + " Jackpot!!");
+                    playerMoney = playerMoney += jackpot;
+                    jackpot = 1000;
+                    playerMoneyText.text = "Money: " + playerMoney.toString();
 
-                else if (bars == 2) {
-                    playerMoney = playerMoney += betAmount * 5;
-                    playerMoneyText.text = "Money " + playerMoney.toString();
-                    console.log("There should be 2 bars");
-                }
-                else if (bars == 1) {
-                    playerMoney = playerMoney += betAmount * 1;
-                    playerMoneyText.text = "Money " + playerMoney.toString();
-                    console.log("There should be 1 bar");
+                    jackpotAmountText.text = "Current Jackpot: " + jackpot.toString();
                 }
                 break;
             case checkRange(outCome[spin], 63, 64): //  3.1% probability
@@ -287,7 +290,8 @@ function Reels() {
     return betLine;
 }
 
-// MAIN MEAT of my code goes here
+// Spin Button Click Event
+// Confirms if player has bet money.
 function spinButtonClicked(event) {
     spinResult = Reels();
     fruits = spinResult[0] + " - " + spinResult[1] + " - " + spinResult[2];
@@ -298,24 +302,27 @@ function spinButtonClicked(event) {
         reelContainers[index].addChild(tiles[index]);
     }
 
+    //Informs player they have run out of money, resets game.
     if (playerMoney <= 0) {
         if (confirm("You ran out of Money! \nDo you want to play again?")) {
             resetButtonClicked();
-          
         }
     }
- 
+    // Informs player they have not bet money.
     else if (betAmount == 0) {
         alert("You didn't bet anything ");
     }
     betAmount -= betAmount;
     betAmountText.text = "Bet Amount: " + betAmount.toString();
 
+    //readds reels to slot machine for use of game after reset.
     game.addChild(reelContainers[0]);
     game.addChild(reelContainers[1]);
     game.addChild(reelContainers[2]);
 }
 
+//Bet $1 Button Click Event.
+//Causes Bet Amount to rise by 1 and player money to decline by 1.
 function betOneButtonClicked() {
     if (betAmount < 1000) {
         playerMoney -= 1;
@@ -325,6 +332,8 @@ function betOneButtonClicked() {
     }
 }
 
+//betMaxButton Click Event
+//Allows user to bet in $100 increments
 function betMaxButtonClicked() {
     if (betAmount < 1000) {
         playerMoney -= 100;
@@ -332,33 +341,36 @@ function betMaxButtonClicked() {
         playerMoneyText.text = "Money: " + playerMoney.toString();
         betAmountText.text = "Bet Amount: " + betAmount.toString();
     }
+    //resets fruit count, so they do not continously win because of previous fruits.
     resetFruitTally();
+    //removes reels from slot machine -- reason forgotten.
     game.removeChild(reelContainers[0]);
     game.removeChild(reelContainers[1]);
     game.removeChild(reelContainers[2]);
 }
 
+//resets game to default settings.
 function resetButtonClicked() {
     playerMoney = 1000;
-    winnings = 0;
     betAmount = 0;
-    win = 0;
-    jackpot = 0;
-    spins = 0;
+    jackpot = 5000;
     playerMoneyText.text = "Money: " + playerMoney.toString();
     betAmountText.text = "Bet Amount: " + betAmount.toString();
 
+    //removes reels from slot machine in order to start fresh.
     game.removeChild(reelContainers[0]);
     game.removeChild(reelContainers[1]);
     game.removeChild(reelContainers[2]);
 }
 
+//Allows player to quit game and be taken to a blank page.
 function quitButtonClicked()
 {
     alert("Do you want to quit the game? You will be moved to a blank page.");
     quitGame();
 }
 
+//Reference to the about:home page that the user goes to when quitting the game.
 function quitGame()
 {
     window.location.replace("about:home");
@@ -367,19 +379,26 @@ function quitGame()
 function createUI() {
     background = new createjs.Bitmap("assets/images/SlotMachine.png");
     game.addChild(background); // Add the background to the game container
+
+    //places the playerMoneyText inside the designated box with its current value.
     playerMoneyText = new createjs.Text("Money: " + playerMoney.toString(), "Arial", "#000000");
     playerMoneyText.x = 57;
     playerMoneyText.y = 593;
     game.addChild(playerMoneyText);
+
+    //places the betAmountText inside the designated box with its current value.
     betAmountText = new createjs.Text("Bet Amount: " + betAmount.toString(), "Arial", "#000000");
     betAmountText.x = 213;
     betAmountText.y = 593;
     game.addChild(betAmountText);
+   
+    //places the jackpotText inside the designated box with its current value.
     jackpotAmountText = new createjs.Text("Current Jackpot: " + jackpot.toString(), "Arial", "#000000");
     jackpotAmountText.x = 372;
     jackpotAmountText.y = 593;
     game.addChild(jackpotAmountText);
 
+    //displays the reels for the game using the images available to cycle through.
     for (var index = 0; index < NUM_REELS; index++) {
         reelContainers[index] = new createjs.Container();
         game.addChild(reelContainers[index]);
@@ -422,7 +441,7 @@ function createUI() {
 function main() {
     game = new createjs.Container(); // Instantiates the Game Container
 
-    createUI();
+    createUI(); //creates the UI for the game.
 
     stage.addChild(game); // Adds the Game Container to the Stage
 }
