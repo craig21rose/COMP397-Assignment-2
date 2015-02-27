@@ -72,7 +72,6 @@
     <Content Include="assets\images\bell.png" />
     <Content Include="assets\images\BetMax.png" />
     <Content Include="assets\images\BetOne.png" />
-    <Content Include="assets\images\blank.png" />
     <Content Include="assets\images\cherry.png" />
     <Content Include="assets\images\grapes.png" />
     <Content Include="assets\images\labelBox.png" />
@@ -82,6 +81,7 @@
     <Content Include="assets\images\seven.png" />
     <Content Include="assets\images\SlotMachine.png" />
     <Content Include="assets\images\SpinButton.png" />
+    <Content Include="assets\images\watermelon.png" />
     <Content Include="css\main.css" />
     <Content Include="index.html" />
     <Content Include="Scripts\lib\easeljs-0.8.0.min.js" />
