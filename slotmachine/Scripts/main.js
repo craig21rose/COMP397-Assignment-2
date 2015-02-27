@@ -368,16 +368,16 @@ function createUI() {
     background = new createjs.Bitmap("assets/images/SlotMachine.png");
     game.addChild(background); // Add the background to the game container
     playerMoneyText = new createjs.Text("Money: " + playerMoney.toString(), "Arial", "#000000");
-    playerMoneyText.x = 55;
+    playerMoneyText.x = 57;
     playerMoneyText.y = 593;
     game.addChild(playerMoneyText);
     betAmountText = new createjs.Text("Bet Amount: " + betAmount.toString(), "Arial", "#000000");
-    betAmountText.x = 55;
-    betAmountText.y = 631;
+    betAmountText.x = 213;
+    betAmountText.y = 593;
     game.addChild(betAmountText);
     jackpotAmountText = new createjs.Text("Current Jackpot: " + jackpot.toString(), "Arial", "#000000");
-    jackpotAmountText.x = 55;
-    jackpotAmountText.y = 670;
+    jackpotAmountText.x = 372;
+    jackpotAmountText.y = 593;
     game.addChild(jackpotAmountText);
 
     for (var index = 0; index < NUM_REELS; index++) {
