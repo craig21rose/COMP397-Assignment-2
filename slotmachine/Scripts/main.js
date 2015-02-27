@@ -139,31 +139,24 @@ function Reels() {
                 betLine[spin] = "Watermelon";
                 watermelon++;
                 if (watermelon == 3) {
-                        playerMoney = playerMoney += betAmount * 5;
+                        playerMoney = playerMoney += betAmount;
                         playerMoneyText.text = "Money " + playerMoney.toString();
                     }
                 if (watermelon == 2) {
-                        playerMoney = playerMoney += betAmount * 1;
+                        playerMoney = playerMoney += betAmount;
                         playerMoneyText.text = "Money " + playerMoney.toString();
                     }
-                if (watermelon == 1) {
-                        playerMoney = playerMoney += betAmount * 0;
-                        playerMoneyText.text = "Money " + playerMoney.toString();
-                    }
+            
                 break;
             case checkRange(outCome[spin], 28, 37): // 15.4% probability
                 betLine[spin] = "Grapes";
                 grapes++;
                 if (grapes == 3){
-                playerMoney = playerMoney += betAmount * 10;
+                playerMoney = playerMoney += betAmount * 2;
                 playerMoneyText.text = "Money " + playerMoney.toString();
                 }
                 if (grapes == 2) {
-                    playerMoney = playerMoney += betAmount * 2;
-                    playerMoneyText.text = "Money " + playerMoney.toString();
-                }
-                if (grapes == 1) {
-                    playerMoney = playerMoney += betAmount * 0;
+                    playerMoney = playerMoney += betAmount * 1;
                     playerMoneyText.text = "Money " + playerMoney.toString();
                 }
                 break;
@@ -171,16 +164,12 @@ function Reels() {
                 betLine[spin] = "Banana";
                 bananas++;
                 if (bananas == 3) {
-                    playerMoney = playerMoney += betAmount * 20;
+                    playerMoney = playerMoney += betAmount * 5;
                     playerMoneyText.text = "Money " + playerMoney.toString();
                 }
                 
                 else if (bananas == 2) {
-                    playerMoney = playerMoney += betAmount * 2;
-                    playerMoneyText.text = "Money " + playerMoney.toString();
-                }
-                else if (bananas == 1) {
-                    playerMoney = playerMoney += betAmount * 0;
+                    playerMoney = playerMoney += betAmount * 1;
                     playerMoneyText.text = "Money " + playerMoney.toString();
                 }
                 break;
@@ -188,16 +177,12 @@ function Reels() {
                 betLine[spin] = "Orange";
                 oranges++;
                 if (oranges == 3) {
-                    playerMoney = playerMoney += betAmount * 30;
+                    playerMoney = playerMoney += betAmount * 10;
                     playerMoneyText.text = "Money " + playerMoney.toString();
                 }
 
                 else if (oranges == 2) {
-                    playerMoney = playerMoney += betAmount * 3;
-                    playerMoneyText.text = "Money " + playerMoney.toString();
-                }
-                else if (oranges == 1) {
-                    playerMoney = playerMoney += betAmount * 0;
+                    playerMoney = playerMoney += betAmount * 1;
                     playerMoneyText.text = "Money " + playerMoney.toString();
                 }
                 break;
@@ -205,16 +190,12 @@ function Reels() {
                 betLine[spin] = "Cherry";
                 cherries++;
                 if (cherries == 3) {
-                    playerMoney = playerMoney += betAmount * 40;
+                    playerMoney = playerMoney += betAmount * 12;
                     playerMoneyText.text = "Money " + playerMoney.toString();
                 }
 
                 else if (cherries == 2) {
-                    playerMoney = playerMoney += betAmount * 4;
-                    playerMoneyText.text = "Money " + playerMoney.toString();
-                }
-                else if (cherries == 1) {
-                    playerMoney = playerMoney += betAmount * 0;
+                    playerMoney = playerMoney += betAmount * 2;
                     playerMoneyText.text = "Money " + playerMoney.toString();
                 }
                 break;
@@ -234,12 +215,12 @@ function Reels() {
                 betLine[spin] = "Bell";
                 bells++;
                 if (bells == 3) {
-                    playerMoney = playerMoney += betAmount * 75;
+                    playerMoney = playerMoney += betAmount * 15;
                     playerMoneyText.text = "Money " + playerMoney.toString();
                 }
 
                 else if (bells == 2) {
-                    playerMoney = playerMoney += betAmount * 10;
+                    playerMoney = playerMoney += betAmount * 5;
                     playerMoneyText.text = "Money " + playerMoney.toString();
                 }
                 else if (bells == 1) {
